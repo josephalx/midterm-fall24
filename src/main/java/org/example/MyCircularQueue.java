@@ -2,7 +2,7 @@ package org.example;
 
 public class MyCircularQueue {
 
-//  Question:
+    //  Question:
 //    Implement the MyCircularQueue class:
 //    MyCircularQueue(k) Initializes the object with the size of the queue to be k.
 //    int Front() Gets the front item from the queue. If the queue is empty, return -1.
@@ -11,10 +11,10 @@ public class MyCircularQueue {
 //    boolean deQueue() Deletes an element from the circular queue. Return true if the operation is successful.
 //    boolean isEmpty() Checks whether the circular queue is empty or not.
 //    boolean isFull() Checks whether the circular queue is full or not.
-    private final int [] queue;
+    private final int[] queue;
+    private final int capacity;
     private int front;
     private int rear;
-    private final int capacity;
     private int size;
 
     public MyCircularQueue(int k) {
@@ -25,6 +25,11 @@ public class MyCircularQueue {
         this.size = 0;
 
     }
+
+    public static void main(String[] args) {
+        System.out.println(0 % 3);
+    }
+
     public boolean enQueue(int value) {
         if (isFull()) {
             return false;
@@ -66,9 +71,5 @@ public class MyCircularQueue {
 
     public boolean isFull() {
         return size == capacity;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(0%3);
     }
 }
