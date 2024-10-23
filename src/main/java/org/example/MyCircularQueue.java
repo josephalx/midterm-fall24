@@ -1,31 +1,74 @@
 package org.example;
 
 public class MyCircularQueue {
-    public MyCircularQueue(int k) {
-        throw new UnsupportedOperationException("Not implemented yet");
-    }
 
+//  Question:
+//    Implement the MyCircularQueue class:
+//    MyCircularQueue(k) Initializes the object with the size of the queue to be k.
+//    int Front() Gets the front item from the queue. If the queue is empty, return -1.
+//    int Rear() Gets the last item from the queue. If the queue is empty, return -1.
+//    boolean enQueue(int value) Inserts an element into the circular queue. Return true if the operation is successful.
+//    boolean deQueue() Deletes an element from the circular queue. Return true if the operation is successful.
+//    boolean isEmpty() Checks whether the circular queue is empty or not.
+//    boolean isFull() Checks whether the circular queue is full or not.
+    private final int [] queue;
+    private int front;
+    private int rear;
+    private final int capacity;
+    private int size;
+
+    public MyCircularQueue(int k) {
+        this.queue = new int[k];
+        this.front = 0;
+        this.rear = -1;
+        this.capacity = k;
+        this.size = 0;
+
+    }
     public boolean enQueue(int value) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (isFull()) {
+            return false;
+        }
+        // Using modulus operator to increment rear and wrap around to the front as it excedes the capacity it will wrap around to the front
+        rear = (rear + 1) % capacity;
+        queue[rear] = value;
+        size++;
+        return true;
     }
 
     public boolean deQueue() {
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (isEmpty()) {
+            return false;
+        }
+        // Using modulus operator to increment front and wrap around to the front as it excedes the capacity it will wrap around to the front
+        front = (front + 1) % capacity;
+        size--;
+        return true;
     }
 
     public int Front() {
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (isEmpty()) {
+            return -1;
+        }
+        return queue[front];
     }
 
     public int Rear() {
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (isEmpty()) {
+            return -1;
+        }
+        return queue[rear];
     }
 
     public boolean isEmpty() {
-        throw new UnsupportedOperationException("Not implemented yet");
+        return size == 0;
     }
 
     public boolean isFull() {
-        throw new UnsupportedOperationException("Not implemented yet");
+        return size == capacity;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(0%3);
     }
 }
